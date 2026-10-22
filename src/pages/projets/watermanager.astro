@@ -1,0 +1,82 @@
+---
+import Base from "../../layouts/Base.astro";
+const year = new Date().getFullYear();
+---
+
+<Base title="WaterManager · projet d'Alicia" description="WaterManager : une application web qui répartit la facture d'eau d'un immeuble entre les logements, selon le nombre d'occupants. Ce que j'ai fait et ce que j'ai appris.">
+  <section class="first">
+    <span class="eyebrow rv">projet 01 · {year}</span>
+    <h1 class="page-title words">
+      <span class="w">WaterManager,</span> <span class="w">ou</span> <span class="w">comment</span> <span class="w">partager</span> <span class="w">une</span> <span class="w">facture</span> <span class="w">d'eau</span> <span class="w">sans</span> <span class="w">dispute.</span>
+    </h1>
+    <p class="lede rv">
+      Une petite application web, en français, qui tourne dans le navigateur et ne
+      demande aucun compte.
+    </p>
+    <div class="links rv">
+      <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener" class="more gold">voir le site</a>
+    </div>
+  </section>
+
+  <section class="case">
+    <div class="rv">
+      <h2>Le problème</h2>
+      <p>
+        Dans beaucoup d'immeubles à Douala, le compteur d'eau est collectif. La facture
+        arrive au nom de l'immeuble, et quelqu'un doit la partager entre les logements.
+        En général, ça se fait sur un bout de papier, et ça finit en discussion : pourquoi
+        je paie autant alors que je vis seule ?
+      </p>
+
+      <h2>Ce que fait l'application</h2>
+      <ul>
+        <li>On saisit le montant total de la facture, en FCFA.</li>
+        <li>On indique le nombre d'occupants de chaque logement, étage par étage.</li>
+        <li>Le montant est divisé par le nombre total de personnes, puis multiplié par les occupants de chaque logement.</li>
+        <li>Les données restent enregistrées dans le navigateur : on peut fermer l'onglet et revenir le mois suivant.</li>
+        <li>Un thème clair et un thème sombre, et une version imprimable de la répartition.</li>
+      </ul>
+
+      <div class="preview water" aria-hidden="true">
+        <div class="row"><span>Montant total</span><span><span data-count="45000" data-suffix=" FCFA">45 000 FCFA</span></span></div>
+        <div class="row"><span>Occupants au total</span><span data-count="23">23</span></div>
+        <div class="row"><span>Par personne</span><span><span data-count="1957" data-suffix=" FCFA">1 957 FCFA</span></span></div>
+        <div class="row tot"><span>Logement de 4 personnes</span><span><span data-count="7826" data-suffix=" FCFA">7 826 FCFA</span></span></div>
+      </div>
+
+      <h2>Ce que j'ai fait</h2>
+      <p>
+        Tout : la structure de la page, la mise en page, le calcul, la sauvegarde, le
+        thème, l'impression. C'est mon premier projet entièrement en ligne.
+      </p>
+
+      <h2>Ce que j'ai appris</h2>
+      <ul>
+        <li>Garder l'état dans le navigateur avec <code>localStorage</code>, et le relire proprement au chargement.</li>
+        <li>Que les arrondis comptent : 45 000 divisé par 23 ne tombe pas juste, et la somme des parts doit quand même faire 45 000.</li>
+        <li>Faire une page qui s'imprime bien, sans boutons ni menus sur le papier.</li>
+        <li>Rendre un formulaire utilisable au pouce, sur un petit écran.</li>
+      </ul>
+
+      <div class="note">
+        Ce que je ferais différemment : prévoir dès le début les logements vides, que
+        j'ai ajoutés après coup.
+      </div>
+    </div>
+
+    <aside class="side rv">
+      <dl>
+        <dt>Type</dt><dd>application web, hors ligne</dd>
+        <dt>Stack</dt><dd>HTML, CSS, JavaScript</dd>
+        <dt>Hébergement</dt><dd>Netlify</dd>
+        <dt>Langue</dt><dd>français</dd>
+        <dt>Adresse</dt><dd><a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">watermanagerstyle.netlify.app</a></dd>
+      </dl>
+    </aside>
+  </section>
+
+  <nav class="nextprev" aria-label="Autres projets">
+    <a href="/projets/">tous les projets</a>
+    <a href="/projets/boutique-de-boxe/">projet suivant : Boutique de Boxe</a>
+  </nav>
+</Base>

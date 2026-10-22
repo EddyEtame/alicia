@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+const email = "aliciazeste4@gmail.com";
+---
+
+<Base title="Contact · Alicia" description="Écrire à Alicia : un stage, un petit projet, une question. Réponse en français ou en anglais, en général dans la journée.">
+  <section class="first contact">
+    <span class="eyebrow rv">contact</span>
+    <h1 class="page-title words">
+      <span class="w">Un</span> <span class="w">stage,</span> <span class="w">un</span> <span class="w">petit</span> <span class="w">projet,</span> <span class="w">une</span> <span class="w">question&nbsp;:</span> <span class="w">écrivez-moi.</span>
+    </h1>
+    <p class="lede rv">Je réponds en français ou en anglais, en général dans la journée.</p>
+  </section>
+
+  <section class="contact-grid">
+    <form class="form rv" action={`https://formsubmit.co/${email}`} method="POST">
+      <input type="hidden" name="_subject" value="Message depuis le portfolio d'Alicia" />
+      <input type="hidden" name="_next" value="https://portfolioalicia.vercel.app/merci/" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="field">
+        <label for="name">votre nom</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="email">votre e-mail</label>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="message">votre message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit">envoyer</button>
+    </form>
+
+    <div class="rv">
+      <h4 class="eyebrow">sinon, directement</h4>
+      <div class="where">
+        <a href={`mailto:${email}`}>{email}</a>
+      </div>
+      <p style="margin-top:28px; color:var(--ink-soft); max-width:40ch">
+        Je suis à Douala, au Cameroun. Pour un stage, dites-moi où et à partir de
+        quand, et je vous réponds avec mes disponibilités.
+      </p>
+    </div>
+  </section>
+</Base>

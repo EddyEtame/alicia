@@ -1,0 +1,162 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = "/portrait.jpg" } = Astro.props;
+const path = Astro.url.pathname;
+const year = new Date().getFullYear();
+
+const links = [
+  { href: "/projets/", label: "projets" },
+  { href: "/a-propos/", label: "à propos" },
+  { href: "/contact/", label: "contact" },
+];
+const isCurrent = (href: string) => path === href || (href !== "/" && path.startsWith(href));
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#17161a" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+    <script is:inline>
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search).get("theme");
+          var t = q === "light" || q === "dark" ? q : localStorage.getItem("theme");
+          if (q) localStorage.setItem("theme", q);
+          if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <a class="brand plain" href="/" aria-label="Accueil">
+          <img src="/logo.svg" alt="" width="42" height="28" />
+          <span>alicia <i>/</i> douala</span>
+        </a>
+        <nav aria-label="Pages">
+          {links.map((l) => (
+            <a href={l.href} class:list={["navlink", "plain", { current: isCurrent(l.href) }]} aria-current={isCurrent(l.href) ? "page" : undefined}>
+              {l.label}
+              <svg class="scribble" viewBox="0 0 80 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1 5 C 20 2, 40 7, 79 3" /></svg>
+            </a>
+          ))}
+          <button class="theme" type="button" aria-label="Changer de thème" title="Clair / sombre">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle class="sun" cx="12" cy="12" r="4.4" />
+              <g class="rays">
+                <path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" />
+              </g>
+              <path class="moon" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z" />
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <main transition:animate="page">
+        <slot />
+      </main>
+
+      <footer>
+        <span>Alicia · Douala · {year}</span>
+        <a href="#" class="up">remonter</a>
+        <span>fait avec Astro, pas de modèle</span>
+      </footer>
+    </div>
+
+    <script>
+      function setTheme(t: string) {
+        document.documentElement.dataset.theme = t;
+        try { localStorage.setItem("theme", t); } catch {}
+      }
+      function bind() {
+        const btn = document.querySelector<HTMLButtonElement>(".theme");
+        if (btn && !btn.dataset.bound) {
+          btn.dataset.bound = "1";
+          btn.addEventListener("click", () => {
+            const cur = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+            setTheme(cur === "dark" ? "light" : "dark");
+          });
+        }
+        const up = document.querySelector<HTMLAnchorElement>(".up");
+        if (up && !up.dataset.bound) {
+          up.dataset.bound = "1";
+          up.addEventListener("click", (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+        }
+
+        // reveal on scroll
+        const els = document.querySelectorAll<HTMLElement>(".rv:not(.is-in)");
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver((entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+            }
+          }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+          els.forEach((el) => io.observe(el));
+        } else {
+          els.forEach((el) => el.classList.add("is-in"));
+        }
+
+        // words of the big titles rise one by one
+        document.querySelectorAll<HTMLElement>(".words:not([data-split])").forEach((h) => {
+          h.dataset.split = "1";
+          let i = 0;
+          h.querySelectorAll("span.w").forEach((w) => { (w as HTMLElement).style.transitionDelay = `${i++ * 55}ms`; });
+          requestAnimationFrame(() => h.classList.add("is-in"));
+        });
+
+        // numbers that count up when they appear
+        document.querySelectorAll<HTMLElement>("[data-count]:not([data-done])").forEach((el) => {
+          const target = Number(el.dataset.count);
+          const suffix = el.dataset.suffix || "";
+          const fmt = (n: number) => n.toLocaleString("fr-FR").replace(/ | /g, " ") + suffix;
+          el.textContent = fmt(0);
+          const run = () => {
+            el.dataset.done = "1";
+            const t0 = performance.now();
+            const dur = 900;
+            const tick = (t: number) => {
+              const p = Math.min(1, (t - t0) / dur);
+              const e = 1 - Math.pow(1 - p, 3);
+              el.textContent = fmt(Math.round(target * e));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          };
+          if ("IntersectionObserver" in window) {
+            const io = new IntersectionObserver((en) => { if (en[0].isIntersecting) { io.disconnect(); run(); } }, { threshold: 0.5 });
+            io.observe(el);
+          } else run();
+        });
+      }
+      bind();
+      document.addEventListener("astro:page-load", bind);
+      document.addEventListener("astro:after-swap", () => {
+        try {
+          const t = localStorage.getItem("theme");
+          if (t) document.documentElement.dataset.theme = t;
+        } catch {}
+      });
+    </script>
+  </body>
+</html>

@@ -1,196 +1,122 @@
 ---
-import "../styles/global.css";
-
+import Base from "../layouts/Base.astro";
 const year = new Date().getFullYear();
 ---
 
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Alicia, étudiante en développement web à Douala. Mes projets : WaterManager et la Boutique de Boxe." />
-    <meta name="theme-color" content="#f5f1e8" />
-    <meta property="og:title" content="Alicia, étudiante développeuse web à Douala" />
-    <meta property="og:description" content="Deux projets, ce que j'ai fait dedans, et ce que j'apprends en ce moment." />
-    <meta property="og:image" content="/alicia.jpg" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>Alicia, étudiante développeuse web à Douala</title>
-  </head>
-  <body>
-    <div class="wrap">
-      <header class="top">
-        <span class="name">alicia / douala</span>
-        <nav>
-          <a href="#projets">projets</a>
-          <a href="#a-propos">à propos</a>
-          <a href="#contact">contact</a>
-        </nav>
-      </header>
-
-      <section class="hero" style="border-top:0">
-        <div class="rv">
-          <h1>
-            Je m'appelle Alicia.<br />
-            J'apprends à <span class="hl">construire des sites</span> qui servent à quelqu'un.
-          </h1>
-          <p>
-            Étudiante à Keyce, à Douala. Je code en HTML, CSS et JavaScript, et je commence
-            à utiliser Astro. Je préfère les petits outils qui règlent un vrai problème aux
-            grandes idées qui ne sortent jamais.
-          </p>
-          <p class="now">en ce moment : deuxième projet en ligne, et je cherche un stage</p>
-        </div>
-
-        <figure class="photo rv">
-          <img src="/portrait.jpg" alt="Alicia, portrait en veste beige et chemise blanche" width="960" height="1280" />
-          <figcaption>Douala, {year}</figcaption>
-        </figure>
-      </section>
-
-      <section id="projets">
-        <div class="sec-head rv">
-          <h2>Projets</h2>
-          <span>deux en ligne, d'autres en cours</span>
-        </div>
-
-        <article class="project rv">
-          <div class="num">01</div>
-          <div>
-            <h3>WaterManager</h3>
-            <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · application web, hors ligne</p>
-            <p>
-              Dans un immeuble, la facture d'eau arrive en une seule fois et il faut la
-              partager entre les logements. WaterManager fait ce calcul : on saisit le
-              montant en FCFA et le nombre d'occupants par logement, et chaque logement
-              voit sa part.
-            </p>
-            <p class="role">
-              <strong>Ce que j'ai fait :</strong> la mise en page, le calcul de répartition,
-              la sauvegarde dans le navigateur pour ne rien perdre en fermant l'onglet,
-              un thème clair et sombre, et une version imprimable de la facture.
-            </p>
-            <div class="preview water" aria-hidden="true">
-              <div class="row"><span>Montant total</span><span>45 000 FCFA</span></div>
-              <div class="row"><span>Occupants</span><span>23</span></div>
-              <div class="row"><span>Logements</span><span>11</span></div>
-              <div class="row tot"><span>Par personne</span><span>1 957 FCFA</span></div>
-            </div>
-            <div class="links">
-              <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">voir le site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project rv">
-          <div class="num">02</div>
-          <div>
-            <h3>Boutique de Boxe</h3>
-            <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
-            <p>
-              Une boutique en ligne d'équipement de boxe : gants, protections, lots pour
-              les enfants. Le site doit être lisible sur un téléphone, rapide, et dire la
-              vérité sur ce qui est en stock.
-            </p>
-            <p class="role">
-              <strong>Ce que j'ai fait :</strong> les pages produits avec les tailles et les
-              lots, les questions fréquentes sur chaque page, et la mise en page sur
-              mobile. Projet fait en équipe.
-            </p>
-            <div class="preview boxe" aria-hidden="true">
-              <div class="row"><span>Gants 10 oz</span><span>S · M · L</span></div>
-              <div class="row"><span>Protège-dents</span><span>enfant · adulte</span></div>
-              <div class="row"><span>Lot enfant (3 pièces)</span><span>1 taille</span></div>
-              <div class="row tot"><span>Au panier</span><span>en un geste</span></div>
-            </div>
-            <div class="links">
-              <span class="soon">mise en ligne en cours</span>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section id="a-propos" class="about">
-        <div class="rv">
-          <div class="sec-head">
-            <h2>À propos</h2>
-          </div>
-          <p>
-            J'ai commencé à coder à l'école, avec des pages très simples, et j'ai continué
-            parce que j'aime voir une idée exister pour de vrai, dans un navigateur, sur le
-            téléphone de quelqu'un.
-          </p>
-          <p>
-            Ce que je sais faire aujourd'hui, je l'ai appris en faisant : un projet, une
-            erreur, une correction, et on recommence. Je prends des notes de tout ce qui
-            m'a bloquée pour ne pas tomber deux fois dans le même trou.
-          </p>
-          <p>
-            Je cherche un stage où je pourrai travailler sur des sites qui ont de vrais
-            utilisateurs, avec des gens qui ont de la patience pour les questions.
-          </p>
-        </div>
-        <div class="rv">
-          <figure class="photo small">
-            <img src="/alicia.jpg" alt="Alicia en chemise Keyce, devant l'école à Douala" width="810" height="1080" loading="lazy" />
-            <figcaption>devant l'école, Keyce</figcaption>
-          </figure>
-          <h4>ce que j'utilise</h4>
-          <ul>
-            <li>HTML / CSS <span>à l'aise</span></li>
-            <li>JavaScript <span>à l'aise</span></li>
-            <li>Astro <span>en cours</span></li>
-            <li>Git / GitHub <span>au quotidien</span></li>
-            <li>Figma <span>pour les maquettes</span></li>
-            <li>Netlify <span>pour mettre en ligne</span></li>
-          </ul>
-          <h4 style="margin-top:28px">j'apprends</h4>
-          <ul>
-            <li>TypeScript <span>bases</span></li>
-            <li>Accessibilité <span>lecteurs d'écran</span></li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="contact" class="contact">
-        <div class="rv">
-          <div class="sec-head">
-            <h2>Contact</h2>
-          </div>
-          <p class="big">Un stage, un petit projet, une question&nbsp;: écrivez-moi.</p>
-          <p>Je réponds en français ou en anglais, en général dans la journée.</p>
-          <div class="where">
-            <a href="mailto:alicia@example.com">par e-mail</a>
-            <a href="https://github.com/" target="_blank" rel="noopener">github</a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener">linkedin</a>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <span>Alicia · Douala · {year}</span>
-        <span>fait avec Astro, pas de modèle</span>
-      </footer>
+<Base title="Alicia, étudiante développeuse web à Douala" description="Alicia, étudiante en développement web à Douala. Mes projets : WaterManager et la Boutique de Boxe.">
+  <section class="hero first">
+    <div>
+      <h1 class="words">
+        <span class="w">Je</span> <span class="w">m'appelle</span> <span class="w">Alicia.</span><br />
+        <span class="w">J'apprends</span> <span class="w">à</span> <span class="w"><span class="hl">construire</span></span> <span class="w"><span class="hl">des</span></span> <span class="w"><span class="hl">sites</span></span> <span class="w">qui</span> <span class="w">servent</span> <span class="w">à</span> <span class="w">quelqu'un.</span>
+      </h1>
+      <p class="rv">
+        Étudiante à Keyce, à Douala. Je code en HTML, CSS et JavaScript, et je commence
+        à utiliser Astro. Je préfère les petits outils qui règlent un vrai problème aux
+        grandes idées qui ne sortent jamais.
+      </p>
+      <p class="now rv">en ce moment : je cherche un stage</p>
     </div>
 
-    <script>
-      const els = document.querySelectorAll(".rv");
-      if ("IntersectionObserver" in window) {
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const e of entries) {
-              if (e.isIntersecting) {
-                e.target.classList.add("is-in");
-                io.unobserve(e.target);
-              }
-            }
-          },
-          { threshold: 0.15 }
-        );
-        els.forEach((el) => io.observe(el));
-      } else {
-        els.forEach((el) => el.classList.add("is-in"));
-      }
-    </script>
-  </body>
-</html>
+    <figure class="photo rv">
+      <img src="/portrait.jpg" alt="Alicia, portrait en veste beige et chemise blanche" width="960" height="1280" />
+      <figcaption>Douala, {year}</figcaption>
+    </figure>
+  </section>
+
+  <section id="projets">
+    <div class="sec-head rv">
+      <h2>Projets</h2>
+      <span>deux en ligne, d'autres en cours</span>
+    </div>
+
+    <article class="project rv">
+      <div class="num">01</div>
+      <div>
+        <h3><a href="/projets/watermanager/" class="plain">WaterManager</a></h3>
+        <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · application web, hors ligne</p>
+        <p>
+          Dans un immeuble, la facture d'eau arrive en une seule fois et il faut la
+          partager entre les logements. WaterManager fait ce calcul : on saisit le
+          montant en FCFA et le nombre d'occupants par logement, et chaque logement
+          voit sa part.
+        </p>
+        <div class="preview water" aria-hidden="true">
+          <div class="row"><span>Montant total</span><span><span data-count="45000" data-suffix=" FCFA">45 000 FCFA</span></span></div>
+          <div class="row"><span>Occupants</span><span data-count="23">23</span></div>
+          <div class="row"><span>Logements</span><span data-count="11">11</span></div>
+          <div class="row tot"><span>Par personne</span><span><span data-count="1957" data-suffix=" FCFA">1 957 FCFA</span></span></div>
+        </div>
+        <div class="links">
+          <a href="/projets/watermanager/" class="more">en savoir plus</a>
+          <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">voir le site</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project rv">
+      <div class="num">02</div>
+      <div>
+        <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
+        <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
+        <p>
+          Une boutique en ligne d'équipement de boxe : gants, protections, lots pour
+          les enfants. Le site doit être lisible sur un téléphone, rapide, et dire la
+          vérité sur ce qui est en stock.
+        </p>
+        <div class="preview boxe" aria-hidden="true">
+          <div class="row"><span>Gants 10 oz</span><span>S · M · L</span></div>
+          <div class="row"><span>Protège-dents</span><span>enfant · adulte</span></div>
+          <div class="row"><span>Lot enfant (3 pièces)</span><span>1 taille</span></div>
+          <div class="row tot"><span>Au panier</span><span>en un geste</span></div>
+        </div>
+        <div class="links">
+          <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
+          <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="a-propos" class="about">
+    <div class="rv">
+      <div class="sec-head">
+        <h2>À propos</h2>
+      </div>
+      <p>
+        J'ai commencé à coder à l'école, avec des pages très simples, et j'ai continué
+        parce que j'aime voir une idée exister pour de vrai, dans un navigateur, sur le
+        téléphone de quelqu'un.
+      </p>
+      <p>
+        Ce que je sais faire aujourd'hui, je l'ai appris en faisant : un projet, une
+        erreur, une correction, et on recommence.
+      </p>
+      <div class="links">
+        <a href="/a-propos/" class="more">en savoir plus</a>
+      </div>
+    </div>
+    <div class="rv">
+      <h4>ce que j'utilise</h4>
+      <ul>
+        <li>HTML / CSS <span>à l'aise</span></li>
+        <li>JavaScript <span>à l'aise</span></li>
+        <li>Astro <span>en cours</span></li>
+        <li>Git / GitHub <span>au quotidien</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="rv">
+      <div class="sec-head">
+        <h2>Contact</h2>
+      </div>
+      <p class="big">Un stage, un petit projet, une question&nbsp;: écrivez-moi.</p>
+      <div class="links">
+        <a href="/contact/" class="more gold">m'écrire</a>
+        <a href="mailto:aliciazeste4@gmail.com">aliciazeste4@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</Base>

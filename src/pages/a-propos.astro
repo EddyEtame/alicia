@@ -1,0 +1,77 @@
+---
+import Base from "../layouts/Base.astro";
+const year = new Date().getFullYear();
+---
+
+<Base title="À propos · Alicia" description="Qui est Alicia : étudiante en développement web à Keyce, Douala. Ce qu'elle utilise, ce qu'elle apprend, ce qu'elle cherche." image="/alicia.jpg">
+  <section class="first about">
+    <div>
+      <span class="eyebrow rv">à propos</span>
+      <h1 class="page-title words">
+        <span class="w">J'aime</span> <span class="w">voir</span> <span class="w">une</span> <span class="w">idée</span> <span class="w">exister</span> <span class="w">pour</span> <span class="w">de</span> <span class="w">vrai.</span>
+      </h1>
+      <div class="rv">
+        <p>
+          Je m'appelle Alicia. Je suis étudiante à Keyce, à Douala, et j'apprends le
+          développement web. J'ai commencé avec des pages très simples, en cours, et
+          j'ai continué à la maison parce que je voulais voir mes idées dans un vrai
+          navigateur, sur le téléphone de quelqu'un.
+        </p>
+        <p>
+          Ce que je sais faire aujourd'hui, je l'ai appris en faisant : un projet, une
+          erreur, une correction, et on recommence. Je prends des notes de tout ce qui
+          m'a bloquée pour ne pas tomber deux fois dans le même trou. Mon premier
+          projet entièrement en ligne est <a href="/projets/watermanager/">WaterManager</a> ;
+          le deuxième, en équipe, est la <a href="/projets/boutique-de-boxe/">Boutique de Boxe</a>.
+        </p>
+        <p>
+          Je préfère les petits outils qui règlent un vrai problème aux grandes idées
+          qui ne sortent jamais. Et je préfère un site qui s'ouvre vite sur un vieux
+          téléphone à un site impressionnant qui ne s'ouvre pas.
+        </p>
+        <p>
+          Je cherche un stage où je pourrai travailler sur des sites qui ont de vrais
+          utilisateurs, avec des gens qui ont de la patience pour les questions.
+        </p>
+        <div class="links">
+          <a href="/contact/" class="more gold">m'écrire</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <figure class="photo small rv">
+        <img src="/alicia.jpg" alt="Alicia en chemise Keyce, devant l'école à Douala" width="810" height="1080" loading="lazy" />
+        <figcaption>devant l'école, Keyce</figcaption>
+      </figure>
+      <div class="rv">
+        <h4>ce que j'utilise</h4>
+        <ul>
+          <li>HTML / CSS <span>à l'aise</span></li>
+          <li>JavaScript <span>à l'aise</span></li>
+          <li>Astro <span>en cours</span></li>
+          <li>Git / GitHub <span>au quotidien</span></li>
+          <li>Figma <span>pour les maquettes</span></li>
+          <li>Netlify, Vercel <span>pour mettre en ligne</span></li>
+        </ul>
+        <h4 style="margin-top:28px">j'apprends</h4>
+        <ul>
+          <li>TypeScript <span>bases</span></li>
+          <li>Accessibilité <span>lecteurs d'écran</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head rv">
+      <h2>Le parcours, en bref</h2>
+    </div>
+    <ul class="timeline rv">
+      <li><b>{year}</b><span>Deuxième projet en ligne, la Boutique de Boxe, en équipe. Je cherche un stage.</span></li>
+      <li><b>{year}</b><span>WaterManager, mon premier site mis en ligne, seule, de la première ligne à l'adresse.</span></li>
+      <li><b>Keyce</b><span>Formation en développement web à Douala : HTML, CSS, JavaScript, bases de données, Git.</span></li>
+      <li><b>avant</b><span>Des pages HTML faites pour voir si j'aimais ça. J'ai aimé.</span></li>
+    </ul>
+  </section>
+</Base>

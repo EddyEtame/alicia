@@ -1,0 +1,66 @@
+---
+import Base from "../../layouts/Base.astro";
+const year = new Date().getFullYear();
+---
+
+<Base title="Projets · Alicia" description="Les projets d'Alicia : WaterManager, une application de répartition de facture d'eau, et la Boutique de Boxe, une boutique en ligne.">
+  <section class="first">
+    <span class="eyebrow rv">projets</span>
+    <h1 class="page-title words">
+      <span class="w">Deux</span> <span class="w">projets</span> <span class="w">en</span> <span class="w">ligne,</span> <span class="w">d'autres</span> <span class="w">dans</span> <span class="w">mes</span> <span class="w">carnets.</span>
+    </h1>
+    <p class="lede rv">
+      Je ne mets ici que ce qui marche pour de vrai, avec une adresse où on peut
+      cliquer. Chaque page raconte le problème, ce que j'ai fait, et ce que j'ai appris.
+    </p>
+  </section>
+
+  <section>
+    <article class="project rv">
+      <div class="num">01</div>
+      <div>
+        <h3><a href="/projets/watermanager/" class="plain">WaterManager</a></h3>
+        <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · application web, hors ligne</p>
+        <p>
+          Répartir une facture d'eau collective entre les logements d'un immeuble,
+          selon le nombre d'occupants. Tout se passe dans le navigateur, sans compte.
+        </p>
+        <div class="links">
+          <a href="/projets/watermanager/" class="more">en savoir plus</a>
+          <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">voir le site</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project rv">
+      <div class="num">02</div>
+      <div>
+        <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
+        <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
+        <p>
+          Une boutique d'équipement de boxe, pensée d'abord pour le téléphone :
+          fiches produits, tailles, lots pour enfants, questions fréquentes.
+        </p>
+        <div class="links">
+          <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
+          <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project rv">
+      <div class="num">03</div>
+      <div>
+        <h3>Ce site</h3>
+        <p class="meta"><b>{year}</b> · Astro · portfolio</p>
+        <p>
+          La page que vous lisez. Pas de modèle, pas de bibliothèque de composants :
+          du HTML, du CSS, et un peu de JavaScript pour les animations et le thème.
+        </p>
+        <div class="links">
+          <a href="https://github.com/EddyEtame/alicia" target="_blank" rel="noopener">le code sur GitHub</a>
+        </div>
+      </div>
+    </article>
+  </section>
+</Base>
