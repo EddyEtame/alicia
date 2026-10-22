@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Page introuvable · Alicia" description="Cette page n'existe pas ou n'existe plus. Retour à l'accueil, aux projets ou au contact." image="/og/home.png">
+  <section class="first contact">
+    <span class="eyebrow rv">erreur 404</span>
+    <h1 class="page-title words">
+      <span class="w">Cette</span> <span class="w">page</span> <span class="w">n'existe</span> <span class="w">pas.</span>
+    </h1>
+    <p class="lede rv">
+      Le reste du site, si. L'adresse a peut-être changé, ou il manque une lettre.
+    </p>
+    <div class="links rv">
+      <a href="/" class="more">accueil</a>
+      <a href="/projets/" class="more">projets</a>
+      <a href="/contact/" class="more gold">contact</a>
+    </div>
+    <p class="rv" style="margin-top:40px; font-family:var(--mono); font-size:13px; color:var(--ink-soft)">
+      adresse demandée : <span id="asked"></span>
+    </p>
+  </section>
+  <script>
+    const el = document.getElementById("asked");
+    if (el) el.textContent = location.pathname;
+  </script>
+</Base>

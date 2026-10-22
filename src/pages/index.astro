@@ -1,21 +1,24 @@
 ---
 import Base from "../layouts/Base.astro";
+import { Image } from "astro:assets";
+import wmDesk from "../assets/shots/watermanager-desktop.png";
+import bbDesk from "../assets/shots/boutique-desktop.png";
 const year = new Date().getFullYear();
 ---
 
-<Base title="Alicia, étudiante développeuse web à Douala" description="Alicia, étudiante en développement web à Douala. Mes projets : WaterManager et la Boutique de Boxe.">
+<Base title="Alicia, développeuse web à Douala" description="Développeuse web front-end à Douala. Deux produits en ligne : WaterManager, une application de gestion pour les immeubles, et la Boutique de Boxe, 1 042 modèles vendus en ligne." image="/og/home.png">
   <section class="hero first">
     <div>
       <h1 class="words">
-        <span class="w">Je</span> <span class="w">m'appelle</span> <span class="w">Alicia.</span><br />
-        <span class="w">J'apprends</span> <span class="w">à</span> <span class="w"><span class="hl">construire</span></span> <span class="w"><span class="hl">des</span></span> <span class="w"><span class="hl">sites</span></span> <span class="w">qui</span> <span class="w">servent</span> <span class="w">à</span> <span class="w">quelqu'un.</span>
+        <span class="w">Alicia,</span> <span class="w">développeuse</span> <span class="w">web.</span><br />
+        <span class="w">Je</span> <span class="w">conçois</span> <span class="w">et</span> <span class="w">je</span> <span class="w">livre</span> <span class="w"><span class="hl">des</span></span> <span class="w"><span class="hl">sites</span></span> <span class="w"><span class="hl">qui</span></span> <span class="w"><span class="hl">servent.</span></span>
       </h1>
       <p class="rv">
-        Étudiante à Keyce, à Douala. Je code en HTML, CSS et JavaScript, et je commence
-        à utiliser Astro. Je préfère les petits outils qui règlent un vrai problème aux
-        grandes idées qui ne sortent jamais.
+        Front-end HTML, CSS, JavaScript et Astro, depuis Douala. Deux produits en ligne,
+        utilisés par de vrais gens : une application de gestion pour les immeubles, et
+        une boutique qui vend 1 042 modèles de matériel de boxe dans toute la France.
       </p>
-      <p class="now rv">en ce moment : je cherche un stage</p>
+      <p class="now rv">disponible pour un stage ou une mission</p>
     </div>
 
     <figure class="photo rv">
@@ -27,53 +30,70 @@ const year = new Date().getFullYear();
   <section id="projets">
     <div class="sec-head rv">
       <h2>Projets</h2>
-      <span>deux en ligne, d'autres en cours</span>
+      <span>deux produits en ligne</span>
     </div>
 
     <article class="project rv">
       <div class="num">01</div>
-      <div>
-        <h3><a href="/projets/watermanager/" class="plain">WaterManager</a></h3>
-        <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · application web, hors ligne</p>
-        <p>
-          Dans un immeuble, la facture d'eau arrive en une seule fois et il faut la
-          partager entre les logements. WaterManager fait ce calcul : on saisit le
-          montant en FCFA et le nombre d'occupants par logement, et chaque logement
-          voit sa part.
-        </p>
-        <div class="preview water" aria-hidden="true">
-          <div class="row"><span>Montant total</span><span><span data-count="45000" data-suffix=" FCFA">45 000 FCFA</span></span></div>
-          <div class="row"><span>Occupants</span><span data-count="23">23</span></div>
-          <div class="row"><span>Logements</span><span data-count="11">11</span></div>
-          <div class="row tot"><span>Par personne</span><span><span data-count="1957" data-suffix=" FCFA">1 957 FCFA</span></span></div>
+      <div class="body">
+        <div>
+          <h3><a href="/projets/watermanager/" class="plain">WaterManager</a></h3>
+          <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · application web, hors ligne</p>
+          <p>
+            Une application qui répartit la facture d'eau d'un immeuble entre ses
+            logements, selon le nombre d'occupants. Conçue, développée et mise en
+            ligne par mes soins : saisie par étage, calcul au centime, sauvegarde sur
+            l'appareil, impression par logement, thème clair et sombre.
+          </p>
+          <div class="preview water" aria-hidden="true">
+            <div class="row"><span>Montant total</span><span><span data-count="45000" data-suffix=" FCFA">45 000 FCFA</span></span></div>
+            <div class="row"><span>Occupants</span><span data-count="23">23</span></div>
+            <div class="row"><span>Logements</span><span data-count="11">11</span></div>
+            <div class="row tot"><span>Par personne</span><span><span data-count="1957" data-suffix=" FCFA">1 957 FCFA</span></span></div>
+          </div>
+          <div class="links">
+            <a href="/projets/watermanager/" class="more">en savoir plus</a>
+            <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">voir le site</a>
+          </div>
         </div>
-        <div class="links">
-          <a href="/projets/watermanager/" class="more">en savoir plus</a>
-          <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">voir le site</a>
-        </div>
+        <a href="/projets/watermanager/" class="plain">
+          <figure class="shot">
+            <Image src={wmDesk} alt="WaterManager : écran de répartition de la facture d'eau, par étage et par logement" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
+            <figcaption>watermanagerstyle.netlify.app</figcaption>
+          </figure>
+        </a>
       </div>
     </article>
 
     <article class="project rv">
       <div class="num">02</div>
-      <div>
-        <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
-        <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
-        <p>
-          Une boutique en ligne d'équipement de boxe : gants, protections, lots pour
-          les enfants. Le site doit être lisible sur un téléphone, rapide, et dire la
-          vérité sur ce qui est en stock.
-        </p>
-        <div class="preview boxe" aria-hidden="true">
-          <div class="row"><span>Gants 10 oz</span><span>S · M · L</span></div>
-          <div class="row"><span>Protège-dents</span><span>enfant · adulte</span></div>
-          <div class="row"><span>Lot enfant (3 pièces)</span><span>1 taille</span></div>
-          <div class="row tot"><span>Au panier</span><span>en un geste</span></div>
+      <div class="body">
+        <div>
+          <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
+          <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
+          <p>
+            Une boutique de matériel de boxe et de MMA : 1 042 modèles, tailles
+            réelles, prix TTC, paiement sécurisé, livraison dans toute la France.
+            J'ai pris en charge les pages produits, les questions fréquentes de chaque
+            page et toute l'expérience mobile, au sein d'une équipe.
+          </p>
+          <div class="preview boxe" aria-hidden="true">
+            <div class="row"><span>Modèles en ligne</span><span><span data-count="1042">1 042</span></span></div>
+            <div class="row"><span>Tailles affichées</span><span>réelles, S · M · L</span></div>
+            <div class="row"><span>Point relais</span><span>offert dès 69 €</span></div>
+            <div class="row tot"><span>Paiement</span><span>carte, PayPlug</span></div>
+          </div>
+          <div class="links">
+            <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
+            <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
+          </div>
         </div>
-        <div class="links">
-          <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
-          <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
-        </div>
+        <a href="/projets/boutique-de-boxe/" class="plain">
+          <figure class="shot">
+            <Image src={bbDesk} alt="Boutique de Boxe : page d'accueil avec les gants Cleto Reyes et la fiche produit" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
+            <figcaption>boutique-de-boxe.com</figcaption>
+          </figure>
+        </a>
       </div>
     </article>
   </section>
@@ -84,25 +104,27 @@ const year = new Date().getFullYear();
         <h2>À propos</h2>
       </div>
       <p>
-        J'ai commencé à coder à l'école, avec des pages très simples, et j'ai continué
-        parce que j'aime voir une idée exister pour de vrai, dans un navigateur, sur le
-        téléphone de quelqu'un.
+        Je suis développeuse web front-end, formée à Keyce, à Douala. Je prends un
+        besoin réel, je le transforme en une interface claire, et je la mets en
+        ligne, rapide et lisible sur n'importe quel téléphone.
       </p>
       <p>
-        Ce que je sais faire aujourd'hui, je l'ai appris en faisant : un projet, une
-        erreur, une correction, et on recommence.
+        Mon exigence : des sites qui disent la vérité, qui s'ouvrent vite, et qu'on
+        comprend sans mode d'emploi.
       </p>
       <div class="links">
         <a href="/a-propos/" class="more">en savoir plus</a>
       </div>
     </div>
     <div class="rv">
-      <h4>ce que j'utilise</h4>
+      <h4>compétences</h4>
       <ul>
-        <li>HTML / CSS <span>à l'aise</span></li>
-        <li>JavaScript <span>à l'aise</span></li>
-        <li>Astro <span>en cours</span></li>
-        <li>Git / GitHub <span>au quotidien</span></li>
+        <li>HTML / CSS <span>maîtrisé</span></li>
+        <li>JavaScript <span>solide</span></li>
+        <li>Astro <span>en production</span></li>
+        <li>Git / GitHub <span>en équipe</span></li>
+        <li>Responsive <span>à chaque livraison</span></li>
+          <li>Accessibilité <span>à chaque livraison</span></li>
       </ul>
     </div>
   </section>
@@ -112,7 +134,7 @@ const year = new Date().getFullYear();
       <div class="sec-head">
         <h2>Contact</h2>
       </div>
-      <p class="big">Un stage, un petit projet, une question&nbsp;: écrivez-moi.</p>
+      <p class="big">Un stage, une mission, un site à construire&nbsp;: parlons&#8209;en.</p>
       <div class="links">
         <a href="/contact/" class="more gold">m'écrire</a>
         <a href="mailto:aliciazeste4@gmail.com">aliciazeste4@gmail.com</a>

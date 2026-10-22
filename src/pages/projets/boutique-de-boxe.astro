@@ -1,74 +1,86 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
+import desk from "../../assets/shots/boutique-desktop.png";
+import mobile from "../../assets/shots/boutique-mobile.png";
+import catalogue from "../../assets/shots/boutique-catalogue.png";
 const year = new Date().getFullYear();
 ---
 
-<Base title="Boutique de Boxe · projet d'Alicia" description="Boutique de Boxe : une boutique en ligne d'équipement de boxe, pensée pour le téléphone. Ce que j'ai fait sur les fiches produits, les lots et les questions fréquentes.">
+<Base title="Boutique de Boxe · boutique en ligne de 1 042 modèles · Alicia" description="Boutique de Boxe : matériel de boxe et de MMA vendu en ligne dans toute la France, 1 042 modèles. Alicia a livré les pages produits, les questions fréquentes et l'expérience mobile." image="/og/boutique-de-boxe.png">
   <section class="first">
-    <span class="eyebrow rv">projet 02 · {year}</span>
+    <span class="eyebrow rv">projet 02 · {year} · front-end, en équipe</span>
     <h1 class="page-title words">
-      <span class="w">Boutique</span> <span class="w">de</span> <span class="w">Boxe,</span> <span class="w">une</span> <span class="w">boutique</span> <span class="w">qu'on</span> <span class="w">lit</span> <span class="w">d'une</span> <span class="w">main.</span>
+      <span class="w">Boutique</span> <span class="w">de</span> <span class="w">Boxe,</span> <span class="w">1 042</span> <span class="w">modèles</span> <span class="w">qu'on</span> <span class="w">achète</span> <span class="w">d'une</span> <span class="w">main.</span>
     </h1>
     <p class="lede rv">
-      Des gants, des protections, des lots pour les enfants. Le site doit être rapide,
-      honnête sur le stock, et simple sur un téléphone.
+      Gants, bandes, protections, sacs de frappe : le matériel des salles, livré dans
+      toute la France. Des pages rapides, honnêtes sur les tailles et les prix, et
+      une expérience mobile à la hauteur du bureau.
     </p>
     <div class="links rv">
       <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener" class="more gold">voir le site</a>
     </div>
+    <ul class="facts rv">
+      <li><b><span data-count="1042">1 042</span></b>modèles en ligne</li>
+      <li><b>69 €</b>point relais offert</li>
+      <li><b>PayPlug</b>paiement sécurisé</li>
+    </ul>
+    <figure class="shot cover rv">
+      <Image src={desk} alt="Boutique de Boxe sur ordinateur : accueil avec les gants Cleto Reyes et la fiche produit en avant" widths={[720, 1100, 1440]} sizes="(max-width: 980px) 94vw, 940px" format="webp" quality={85} />
+      <figcaption>l'accueil, avec la fiche produit du moment</figcaption>
+    </figure>
   </section>
 
   <section class="case">
     <div class="rv">
-      <h2>Le problème</h2>
+      <h2>Le besoin</h2>
       <p>
-        Acheter du matériel de boxe en ligne, c'est souvent deviner : quelle taille
-        de gants, quel protège-dents pour un enfant de huit ans, est-ce que c'est en
-        stock. La boutique devait répondre à ces questions avant qu'on les pose.
+        Acheter du matériel de boxe en ligne, c'est souvent deviner : quelle taille de
+        gants, quel protège-dents pour un enfant de huit ans, est-ce que c'est vraiment
+        en stock. La boutique devait répondre à ces questions avant qu'on les pose, et
+        le faire sur un téléphone, parce que c'est là que les clients arrivent.
       </p>
 
-      <h2>Ce que fait le site</h2>
+      <h2>Ce que j'ai livré</h2>
       <ul>
-        <li>Un catalogue par famille de produits, avec les tailles disponibles visibles tout de suite.</li>
-        <li>Des lots pour enfants qu'on met au panier en un geste : une taille, un bouton.</li>
-        <li>Des questions fréquentes sur chaque page, écrites à partir des vraies questions des clients.</li>
-        <li>Des pages légères, qui s'ouvrent vite même en 3G.</li>
+        <li>Les pages produits : tailles réelles affichées d'emblée, prix TTC, marque, et un bouton d'achat qui ne demande qu'un geste.</li>
+        <li>Les lots pour enfants, mis au panier d'un coup : une taille, un bouton.</li>
+        <li>Les questions fréquentes sur chaque type de page, écrites à partir des vraies questions des clients, balisées pour les moteurs de recherche.</li>
+        <li>L'expérience mobile de bout en bout, du plus petit écran au plus grand, testée sur de vrais téléphones.</li>
       </ul>
 
-      <div class="preview boxe" aria-hidden="true">
-        <div class="row"><span>Gants 10 oz</span><span>S · M · L</span></div>
-        <div class="row"><span>Protège-dents</span><span>enfant · adulte</span></div>
-        <div class="row"><span>Lot enfant (3 pièces)</span><span>1 taille</span></div>
-        <div class="row tot"><span>Au panier</span><span>en un geste</span></div>
+      <div class="gallery">
+        <figure class="shot">
+          <Image src={catalogue} alt="Le catalogue : recherche, filtres, et les premiers modèles sur fond sombre" widths={[600, 900, 1200]} sizes="(max-width: 900px) 94vw, 600px" format="webp" quality={85} />
+          <figcaption>le catalogue : 1 042 modèles, recherche et filtres</figcaption>
+        </figure>
+        <figure class="shot tall">
+          <Image src={mobile} alt="Boutique de Boxe sur téléphone : titre, texte et gants en pleine largeur" widths={[400, 600]} sizes="300px" format="webp" quality={85} />
+          <figcaption>sur téléphone</figcaption>
+        </figure>
       </div>
 
-      <h2>Ce que j'ai fait</h2>
-      <p>
-        Projet fait en équipe. Ma part : les pages produits avec les tailles et les
-        lots, les questions fréquentes sur chaque type de page, et la mise en page sur
-        mobile, du plus petit écran au plus grand.
-      </p>
-
-      <h2>Ce que j'ai appris</h2>
+      <h2>Les décisions</h2>
       <ul>
-        <li>Travailler avec Astro : des composants, des pages générées à partir de données, un site statique rapide.</li>
-        <li>Travailler à plusieurs sur un même dépôt Git : tirer avant de pousser, toujours.</li>
-        <li>Qu'une fiche produit, c'est d'abord des réponses : taille, prix, délai, et seulement ensuite une belle photo.</li>
-        <li>Tester sur un vrai téléphone, pas seulement en réduisant la fenêtre.</li>
+        <li><strong>Une fiche produit, c'est d'abord des réponses.</strong> Taille, prix, délai, puis la photo. Le client qui sait ce qu'il achète ne renvoie pas.</li>
+        <li><strong>Le mobile n'est pas une version réduite.</strong> Même contenu, même densité, mêmes fonctions qu'au bureau ; seule la mise en page change.</li>
+        <li><strong>Astro pour la vitesse.</strong> Des pages générées à partir des données du catalogue, servies statiques, qui s'ouvrent vite même en 3G.</li>
+        <li><strong>Git à plusieurs, sans accident.</strong> On tire avant de pousser, toujours ; une règle d'équipe que je tiens.</li>
       </ul>
 
       <div class="note">
-        Ce que je ferais différemment : écrire les questions fréquentes dès la
-        première maquette, pas à la fin.
+        Et après : écrire les questions fréquentes dès la première maquette, pas à la
+        fin, pour qu'elles guident la structure des fiches.
       </div>
     </div>
 
     <aside class="side rv">
       <dl>
+        <dt>Rôle</dt><dd>pages produits, FAQ, expérience mobile</dd>
         <dt>Type</dt><dd>boutique en ligne</dd>
         <dt>Stack</dt><dd>Astro, HTML, CSS, JavaScript</dd>
-        <dt>Rôle</dt><dd>fiches produits, FAQ, mobile</dd>
-        <dt>Équipe</dt><dd>projet en équipe</dd>
+        <dt>Équipe</dt><dd>projet en équipe, dépôt Git partagé</dd>
         <dt>Adresse</dt><dd><a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">boutique-de-boxe.com</a></dd>
       </dl>
     </aside>

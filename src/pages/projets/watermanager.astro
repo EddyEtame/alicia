@@ -1,40 +1,53 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
+import desk from "../../assets/shots/watermanager-desktop.png";
+import mobile from "../../assets/shots/watermanager-mobile.png";
 const year = new Date().getFullYear();
 ---
 
-<Base title="WaterManager · projet d'Alicia" description="WaterManager : une application web qui répartit la facture d'eau d'un immeuble entre les logements, selon le nombre d'occupants. Ce que j'ai fait et ce que j'ai appris.">
+<Base title="WaterManager · application de répartition de facture d'eau · Alicia" description="WaterManager répartit la facture d'eau d'un immeuble entre ses logements selon le nombre d'occupants. Conçue, développée et mise en ligne par Alicia : calcul au centime, sauvegarde sur l'appareil, impression par logement." image="/og/watermanager.png">
   <section class="first">
-    <span class="eyebrow rv">projet 01 · {year}</span>
+    <span class="eyebrow rv">projet 01 · {year} · conception et développement</span>
     <h1 class="page-title words">
-      <span class="w">WaterManager,</span> <span class="w">ou</span> <span class="w">comment</span> <span class="w">partager</span> <span class="w">une</span> <span class="w">facture</span> <span class="w">d'eau</span> <span class="w">sans</span> <span class="w">dispute.</span>
+      <span class="w">WaterManager,</span> <span class="w">la</span> <span class="w">facture</span> <span class="w">d'eau</span> <span class="w">de</span> <span class="w">l'immeuble</span> <span class="w">répartie</span> <span class="w">sans</span> <span class="w">dispute.</span>
     </h1>
     <p class="lede rv">
-      Une petite application web, en français, qui tourne dans le navigateur et ne
-      demande aucun compte.
+      Une application web en français, qui tourne dans le navigateur, sans compte et
+      sans connexion. Saisie par étage, calcul au centime, impression par logement.
     </p>
     <div class="links rv">
       <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener" class="more gold">voir le site</a>
     </div>
+    <ul class="facts rv">
+      <li><b>11</b>logements, 3 étages</li>
+      <li><b>0</b>compte à créer</li>
+      <li><b>100 %</b>hors ligne</li>
+    </ul>
+    <figure class="shot cover rv">
+      <Image src={desk} alt="WaterManager sur ordinateur : montant de la facture, occupants, logements, puis la liste par étage" widths={[720, 1100, 1440]} sizes="(max-width: 980px) 94vw, 940px" format="webp" quality={85} />
+      <figcaption>l'écran principal, thème sombre</figcaption>
+    </figure>
   </section>
 
   <section class="case">
     <div class="rv">
-      <h2>Le problème</h2>
+      <h2>Le besoin</h2>
       <p>
         Dans beaucoup d'immeubles à Douala, le compteur d'eau est collectif. La facture
         arrive au nom de l'immeuble, et quelqu'un doit la partager entre les logements.
-        En général, ça se fait sur un bout de papier, et ça finit en discussion : pourquoi
-        je paie autant alors que je vis seule ?
+        Sur papier, ça finit en discussion : pourquoi je paie autant alors que je vis
+        seule ? Il fallait un outil que le gestionnaire ouvre une fois par mois, et qui
+        donne un montant par logement que personne ne conteste.
       </p>
 
-      <h2>Ce que fait l'application</h2>
+      <h2>Ce que j'ai livré</h2>
       <ul>
-        <li>On saisit le montant total de la facture, en FCFA.</li>
-        <li>On indique le nombre d'occupants de chaque logement, étage par étage.</li>
-        <li>Le montant est divisé par le nombre total de personnes, puis multiplié par les occupants de chaque logement.</li>
-        <li>Les données restent enregistrées dans le navigateur : on peut fermer l'onglet et revenir le mois suivant.</li>
-        <li>Un thème clair et un thème sombre, et une version imprimable de la répartition.</li>
+        <li>Un écran unique : la facture en FCFA, les occupants par logement, étage par étage, et la part de chacun calculée en direct.</li>
+        <li>Un calcul au centime près : la somme des parts fait exactement le montant de la facture, même quand la division ne tombe pas juste.</li>
+        <li>La sauvegarde sur l'appareil : on ferme l'onglet, on revient le mois suivant, l'immeuble est encore là.</li>
+        <li>Une impression par logement, propre, sans boutons ni menus sur le papier.</li>
+        <li>Un thème clair et un thème sombre, et une mise en page pensée pour le pouce sur un petit écran.</li>
       </ul>
 
       <div class="preview water" aria-hidden="true">
@@ -44,28 +57,29 @@ const year = new Date().getFullYear();
         <div class="row tot"><span>Logement de 4 personnes</span><span><span data-count="7826" data-suffix=" FCFA">7 826 FCFA</span></span></div>
       </div>
 
-      <h2>Ce que j'ai fait</h2>
-      <p>
-        Tout : la structure de la page, la mise en page, le calcul, la sauvegarde, le
-        thème, l'impression. C'est mon premier projet entièrement en ligne.
-      </p>
-
-      <h2>Ce que j'ai appris</h2>
+      <h2>Les décisions</h2>
       <ul>
-        <li>Garder l'état dans le navigateur avec <code>localStorage</code>, et le relire proprement au chargement.</li>
-        <li>Que les arrondis comptent : 45 000 divisé par 23 ne tombe pas juste, et la somme des parts doit quand même faire 45 000.</li>
-        <li>Faire une page qui s'imprime bien, sans boutons ni menus sur le papier.</li>
-        <li>Rendre un formulaire utilisable au pouce, sur un petit écran.</li>
+        <li><strong>Pas de compte, pas de serveur.</strong> Les données d'un immeuble n'ont rien à faire sur un serveur à moi. Tout vit dans le navigateur du gestionnaire.</li>
+        <li><strong>La vérité avant la vitesse.</strong> Les arrondis sont répartis pour que le total colle à la facture ; un écart de 3 FCFA sur le papier, c'est une dispute.</li>
+        <li><strong>Le papier compte encore.</strong> À Douala, le reçu imprimé reste la preuve ; la version imprimable n'est pas une option, c'est le produit.</li>
       </ul>
 
+      <div class="gallery">
+        <figure class="shot tall">
+          <Image src={mobile} alt="WaterManager sur téléphone : les mêmes informations, en une colonne" widths={[400, 600]} sizes="300px" format="webp" quality={85} />
+          <figcaption>sur téléphone</figcaption>
+        </figure>
+      </div>
+
       <div class="note">
-        Ce que je ferais différemment : prévoir dès le début les logements vides, que
-        j'ai ajoutés après coup.
+        Et après : prévoir les logements vides dès la maquette, et un export du mois
+        en PDF pour l'envoyer au syndic sans imprimer.
       </div>
     </div>
 
     <aside class="side rv">
       <dl>
+        <dt>Rôle</dt><dd>conception, développement, mise en ligne</dd>
         <dt>Type</dt><dd>application web, hors ligne</dd>
         <dt>Stack</dt><dd>HTML, CSS, JavaScript</dd>
         <dt>Hébergement</dt><dd>Netlify</dd>

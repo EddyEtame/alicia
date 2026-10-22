@@ -1,65 +1,71 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
+import wmDesk from "../../assets/shots/watermanager-desktop.png";
+import bbDesk from "../../assets/shots/boutique-desktop.png";
 const year = new Date().getFullYear();
 ---
 
-<Base title="Projets · Alicia" description="Les projets d'Alicia : WaterManager, une application de répartition de facture d'eau, et la Boutique de Boxe, une boutique en ligne.">
+<Base title="Projets · Alicia, développeuse web" description="Les projets livrés par Alicia : WaterManager, application de répartition de facture d'eau, et la Boutique de Boxe, boutique en ligne de 1 042 modèles." image="/og/projets.png">
   <section class="first">
     <span class="eyebrow rv">projets</span>
     <h1 class="page-title words">
-      <span class="w">Deux</span> <span class="w">projets</span> <span class="w">en</span> <span class="w">ligne,</span> <span class="w">d'autres</span> <span class="w">dans</span> <span class="w">mes</span> <span class="w">carnets.</span>
+      <span class="w">Deux</span> <span class="w">produits</span> <span class="w">en</span> <span class="w">ligne,</span> <span class="w">utilisés</span> <span class="w">tous</span> <span class="w">les</span> <span class="w">jours.</span>
     </h1>
     <p class="lede rv">
-      Je ne mets ici que ce qui marche pour de vrai, avec une adresse où on peut
-      cliquer. Chaque page raconte le problème, ce que j'ai fait, et ce que j'ai appris.
+      Je ne présente que ce qui est en ligne, avec une adresse où cliquer. Chaque
+      page détaille le besoin, ce que j'ai livré, et les décisions prises en chemin.
     </p>
   </section>
 
   <section>
     <article class="project rv">
       <div class="num">01</div>
-      <div>
-        <h3><a href="/projets/watermanager/" class="plain">WaterManager</a></h3>
-        <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · application web, hors ligne</p>
-        <p>
-          Répartir une facture d'eau collective entre les logements d'un immeuble,
-          selon le nombre d'occupants. Tout se passe dans le navigateur, sans compte.
-        </p>
-        <div class="links">
-          <a href="/projets/watermanager/" class="more">en savoir plus</a>
-          <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">voir le site</a>
+      <div class="body">
+        <div>
+          <h3><a href="/projets/watermanager/" class="plain">WaterManager</a></h3>
+          <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · application web, hors ligne</p>
+          <p>
+            Répartir une facture d'eau collective entre les logements d'un immeuble,
+            selon le nombre d'occupants. Conçue et développée seule, de la première
+            maquette à la mise en ligne. Fonctionne sans compte, sans connexion.
+          </p>
+          <div class="links">
+            <a href="/projets/watermanager/" class="more">en savoir plus</a>
+            <a href="https://watermanagerstyle.netlify.app/" target="_blank" rel="noopener">voir le site</a>
+          </div>
         </div>
+        <a href="/projets/watermanager/" class="plain">
+          <figure class="shot">
+            <Image src={wmDesk} alt="WaterManager : écran de répartition de la facture d'eau, par étage et par logement" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
+            <figcaption>watermanagerstyle.netlify.app</figcaption>
+          </figure>
+        </a>
       </div>
     </article>
 
     <article class="project rv">
       <div class="num">02</div>
-      <div>
-        <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
-        <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
-        <p>
-          Une boutique d'équipement de boxe, pensée d'abord pour le téléphone :
-          fiches produits, tailles, lots pour enfants, questions fréquentes.
-        </p>
-        <div class="links">
-          <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
-          <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
+      <div class="body">
+        <div>
+          <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
+          <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
+          <p>
+            Une boutique de matériel de boxe et de MMA, 1 042 modèles, livrée dans
+            toute la France. Pages produits, questions fréquentes et expérience mobile
+            à ma charge, dans une équipe qui travaille sur un même dépôt Git.
+          </p>
+          <div class="links">
+            <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
+            <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
+          </div>
         </div>
-      </div>
-    </article>
-
-    <article class="project rv">
-      <div class="num">03</div>
-      <div>
-        <h3>Ce site</h3>
-        <p class="meta"><b>{year}</b> · Astro · portfolio</p>
-        <p>
-          La page que vous lisez. Pas de modèle, pas de bibliothèque de composants :
-          du HTML, du CSS, et un peu de JavaScript pour les animations et le thème.
-        </p>
-        <div class="links">
-          <a href="https://github.com/EddyEtame/alicia" target="_blank" rel="noopener">le code sur GitHub</a>
-        </div>
+        <a href="/projets/boutique-de-boxe/" class="plain">
+          <figure class="shot">
+            <Image src={bbDesk} alt="Boutique de Boxe : page d'accueil avec les gants Cleto Reyes et la fiche produit" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
+            <figcaption>boutique-de-boxe.com</figcaption>
+          </figure>
+        </a>
       </div>
     </article>
   </section>

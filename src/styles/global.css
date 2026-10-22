@@ -18,9 +18,9 @@
 :root[data-theme="dark"] {
   --paper: #17161a;
   --paper-2: #211f25;
-  --ink: #ece7dc;
-  --ink-soft: #a39d92;
-  --rule: #3a383f;
+  --ink: #f3efe7;
+  --ink-soft: #c2bcb0;
+  --rule: #3f3d44;
   --marker: #e2c53a;
   --marker-ink: #17161a;
   --gold: #e3c15a;
@@ -149,9 +149,9 @@ main { flex: 1; }
 .hero h1, .page-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(38px, 6vw, 66px);
-  line-height: 1.05;
-  letter-spacing: -.01em;
+  font-size: clamp(36px, 5.2vw, 58px);
+  line-height: 1.06;
+  letter-spacing: -.015em;
   margin: 0 0 26px;
 }
 .page-title { font-size: clamp(34px, 5vw, 54px); margin-bottom: 18px; }
@@ -485,8 +485,33 @@ footer {
   ::view-transition-old(page), ::view-transition-new(page) { animation: none; }
 }
 
+/* ---------- project images ---------- */
+.shot {
+  margin: 0;
+  border: 1px solid var(--rule);
+  background: var(--print);
+  padding: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 18px 34px -22px rgba(0,0,0,.45);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.shot img { display: block; width: 100%; height: auto; }
+.shot figcaption { font-family: var(--mono); font-size: 12px; color: #5b564e; padding: 8px 2px 0; }
+.project:hover .shot, .shot:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 28px 44px -24px rgba(0,0,0,.55); }
+.project .body { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: start; }
+.gallery { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin: 32px 0 8px; align-items: start; }
+.gallery .shot.tall img { aspect-ratio: 6 / 11; object-fit: cover; object-position: top; }
+.cover { margin: 36px 0 0; }
+.facts { display: flex; gap: 28px; flex-wrap: wrap; margin: 28px 0 0; padding: 0; list-style: none; }
+.facts li { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
+.facts b { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; color: var(--ink); line-height: 1.1; }
+
 /* ---------- tablet ---------- */
 @media (max-width: 900px) {
+  .project .body { grid-template-columns: 1fr; gap: 20px; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery .shot.tall { max-width: 320px; }
+  .about { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .hero { gap: 32px; }
   .case { grid-template-columns: 1fr; gap: 32px; }
   .case .side { position: static; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -503,6 +528,8 @@ footer {
   .photo { justify-self: start; width: min(70%, 280px); transform: rotate(-2deg); margin-left: 6px; }
   .about { grid-template-columns: 1fr; gap: 32px; }
   .project { grid-template-columns: 1fr; gap: 6px; padding: 26px 0; }
+  .facts { gap: 18px 24px; }
+  .facts b { font-size: 24px; }
   .project .num { padding-top: 0; }
   section { padding: 44px 0; }
   .lede { font-size: 18px; }

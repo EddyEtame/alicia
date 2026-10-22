@@ -3,35 +3,35 @@ import Base from "../layouts/Base.astro";
 const year = new Date().getFullYear();
 ---
 
-<Base title="À propos · Alicia" description="Qui est Alicia : étudiante en développement web à Keyce, Douala. Ce qu'elle utilise, ce qu'elle apprend, ce qu'elle cherche." image="/alicia.jpg">
+<Base title="À propos · Alicia, développeuse web à Douala" description="Alicia, développeuse web front-end formée à Keyce, Douala. Compétences, façon de travailler, parcours, disponibilité pour un stage ou une mission." image="/og/a-propos.png">
   <section class="first about">
     <div>
       <span class="eyebrow rv">à propos</span>
       <h1 class="page-title words">
-        <span class="w">J'aime</span> <span class="w">voir</span> <span class="w">une</span> <span class="w">idée</span> <span class="w">exister</span> <span class="w">pour</span> <span class="w">de</span> <span class="w">vrai.</span>
+        <span class="w">Je</span> <span class="w">transforme</span> <span class="w">un</span> <span class="w">besoin</span> <span class="w">réel</span> <span class="w">en</span> <span class="w">une</span> <span class="w">interface</span> <span class="w">qu'on</span> <span class="w">comprend</span> <span class="w">sans</span> <span class="w">mode</span> <span class="w">d'emploi.</span>
       </h1>
       <div class="rv">
         <p>
-          Je m'appelle Alicia. Je suis étudiante à Keyce, à Douala, et j'apprends le
-          développement web. J'ai commencé avec des pages très simples, en cours, et
-          j'ai continué à la maison parce que je voulais voir mes idées dans un vrai
-          navigateur, sur le téléphone de quelqu'un.
+          Je m'appelle Alicia, développeuse web front-end à Douala, formée à Keyce.
+          Je construis des sites et des applications web qui s'ouvrent vite, qui
+          disent la vérité, et qui tiennent sur le téléphone de n'importe qui.
         </p>
         <p>
-          Ce que je sais faire aujourd'hui, je l'ai appris en faisant : un projet, une
-          erreur, une correction, et on recommence. Je prends des notes de tout ce qui
-          m'a bloquée pour ne pas tomber deux fois dans le même trou. Mon premier
-          projet entièrement en ligne est <a href="/projets/watermanager/">WaterManager</a> ;
-          le deuxième, en équipe, est la <a href="/projets/boutique-de-boxe/">Boutique de Boxe</a>.
+          Deux produits en ligne portent ma signature. <a href="/projets/watermanager/">WaterManager</a>,
+          une application de gestion pour les immeubles, que j'ai conçue, développée et
+          mise en ligne seule. La <a href="/projets/boutique-de-boxe/">Boutique de Boxe</a>,
+          une boutique de 1 042 modèles livrée dans toute la France, où j'ai pris en
+          charge les pages produits, les questions fréquentes et toute l'expérience mobile,
+          au sein d'une équipe.
         </p>
         <p>
-          Je préfère les petits outils qui règlent un vrai problème aux grandes idées
-          qui ne sortent jamais. Et je préfère un site qui s'ouvre vite sur un vieux
-          téléphone à un site impressionnant qui ne s'ouvre pas.
+          Ma façon de travailler : je pars du besoin, pas de la technologie. Je maquette
+          vite, je mets en ligne tôt, je mesure sur de vrais appareils, et je corrige.
+          Je documente ce que j'apprends pour que l'équipe suivante parte plus haut.
         </p>
         <p>
-          Je cherche un stage où je pourrai travailler sur des sites qui ont de vrais
-          utilisateurs, avec des gens qui ont de la patience pour les questions.
+          Je suis disponible pour un stage ou une mission, sur des produits qui ont de
+          vrais utilisateurs, avec une équipe qui a de l'exigence.
         </p>
         <div class="links">
           <a href="/contact/" class="more gold">m'écrire</a>
@@ -45,19 +45,21 @@ const year = new Date().getFullYear();
         <figcaption>devant l'école, Keyce</figcaption>
       </figure>
       <div class="rv">
-        <h4>ce que j'utilise</h4>
+        <h4>compétences</h4>
         <ul>
-          <li>HTML / CSS <span>à l'aise</span></li>
-          <li>JavaScript <span>à l'aise</span></li>
-          <li>Astro <span>en cours</span></li>
-          <li>Git / GitHub <span>au quotidien</span></li>
-          <li>Figma <span>pour les maquettes</span></li>
-          <li>Netlify, Vercel <span>pour mettre en ligne</span></li>
+          <li>HTML / CSS <span>maîtrisé</span></li>
+          <li>JavaScript <span>solide</span></li>
+          <li>Astro <span>en production</span></li>
+          <li>Git / GitHub <span>en équipe</span></li>
+          <li>Responsive <span>à chaque livraison</span></li>
+          <li>Accessibilité <span>à chaque livraison</span></li>
+          <li>Figma <span>maquettes</span></li>
+          <li>Netlify, Vercel <span>mise en ligne</span></li>
         </ul>
-        <h4 style="margin-top:28px">j'apprends</h4>
+        <h4 style="margin-top:28px">en ce moment</h4>
         <ul>
-          <li>TypeScript <span>bases</span></li>
-          <li>Accessibilité <span>lecteurs d'écran</span></li>
+          <li>TypeScript <span>sur les prochains projets</span></li>
+          <li>Accessibilité <span>lecteurs d'écran, tests réels</span></li>
         </ul>
       </div>
     </div>
@@ -68,10 +70,9 @@ const year = new Date().getFullYear();
       <h2>Le parcours, en bref</h2>
     </div>
     <ul class="timeline rv">
-      <li><b>{year}</b><span>Deuxième projet en ligne, la Boutique de Boxe, en équipe. Je cherche un stage.</span></li>
-      <li><b>{year}</b><span>WaterManager, mon premier site mis en ligne, seule, de la première ligne à l'adresse.</span></li>
+      <li><b>{year}</b><span>Boutique de Boxe : pages produits, FAQ et expérience mobile d'une boutique de 1 042 modèles, en équipe.</span></li>
+      <li><b>{year}</b><span>WaterManager : application de répartition de facture d'eau, conçue, développée et mise en ligne seule.</span></li>
       <li><b>Keyce</b><span>Formation en développement web à Douala : HTML, CSS, JavaScript, bases de données, Git.</span></li>
-      <li><b>avant</b><span>Des pages HTML faites pour voir si j'aimais ça. J'ai aimé.</span></li>
     </ul>
   </section>
 </Base>
