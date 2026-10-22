@@ -2,19 +2,20 @@
 import Base from "../../layouts/Base.astro";
 import { Image } from "astro:assets";
 import wmDesk from "../../assets/shots/watermanager-desktop.png";
-import bbDesk from "../../assets/shots/boutique-desktop.png";
+import tdDesk from "../../assets/shots/taches-desktop.png";
 const year = new Date().getFullYear();
 ---
 
-<Base title="Projets · Alicia, développeuse web" description="Les projets livrés par Alicia : WaterManager, application de répartition de facture d'eau, et la Boutique de Boxe, boutique en ligne de 1 042 modèles." image="/og/projets.png">
+<Base title="Projets · Alicia, développeuse web" description="Les projets d'Alicia : WaterManager, application de répartition de facture d'eau en ligne, et Tâches, un outil personnel hors ligne." image="/og/projets.png">
   <section class="first">
     <span class="eyebrow rv">projets</span>
     <h1 class="page-title words">
-      <span class="w">Deux</span> <span class="w">produits</span> <span class="w">en</span> <span class="w">ligne,</span> <span class="w">utilisés</span> <span class="w">tous</span> <span class="w">les</span> <span class="w">jours.</span>
+      <span class="w">Deux</span> <span class="w">produits</span> <span class="w">qui</span> <span class="w">servent</span> <span class="w">tous</span> <span class="w">les</span> <span class="w">jours.</span>
     </h1>
     <p class="lede rv">
-      Je ne présente que ce qui est en ligne, avec une adresse où cliquer. Chaque
-      page détaille le besoin, ce que j'ai livré, et les décisions prises en chemin.
+      Je ne présente que ce qui marche pour de vrai : un produit en ligne, et un outil
+      que j'utilise moi-même chaque jour. Chaque page détaille le besoin, ce que j'ai
+      livré, et les décisions prises en chemin.
     </p>
   </section>
 
@@ -48,22 +49,21 @@ const year = new Date().getFullYear();
       <div class="num">02</div>
       <div class="body">
         <div>
-          <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
-          <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
+          <h3><a href="/projets/taches/" class="plain">Tâches</a></h3>
+          <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · outil personnel, hors ligne</p>
           <p>
-            Une boutique de matériel de boxe et de MMA, 1 042 modèles, livrée dans
-            toute la France. Pages produits, questions fréquentes et expérience mobile
-            à ma charge, dans une équipe qui travaille sur un même dépôt Git.
+            Ma liste de tâches, faite pour moi seule : trois catégories, des échéances,
+            le compte de la journée, et un thème sombre pour le soir. Rien ne quitte
+            l'appareil. Pas de lien public : c'est un outil, pas une vitrine.
           </p>
           <div class="links">
-            <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
-            <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
+            <a href="/projets/taches/" class="more">en savoir plus</a>
           </div>
         </div>
-        <a href="/projets/boutique-de-boxe/" class="plain">
+        <a href="/projets/taches/" class="plain">
           <figure class="shot">
-            <Image src={bbDesk} alt="Boutique de Boxe : page d'accueil avec les gants Cleto Reyes et la fiche produit" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
-            <figcaption>boutique-de-boxe.com</figcaption>
+            <Image src={tdDesk} alt="Tâches : la liste du jour, groupée par école, projet et perso, avec la barre de progression" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
+            <figcaption>outil personnel · jeudi 22 octobre</figcaption>
           </figure>
         </a>
       </div>

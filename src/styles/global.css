@@ -338,7 +338,7 @@ section.first { border-top: 0; padding-top: 48px; }
 .preview .row:last-child { border-bottom: 0; }
 .preview .tot { font-weight: 700; }
 .preview.water { border-left: 4px solid #4a90e2; }
-.preview.boxe { border-left: 4px solid #c8102e; }
+.preview.todo { border-left: 4px solid #2f8f5b; }
 
 /* ---------- project page ---------- */
 .case { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: start; }

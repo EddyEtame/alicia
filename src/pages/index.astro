@@ -2,11 +2,11 @@
 import Base from "../layouts/Base.astro";
 import { Image } from "astro:assets";
 import wmDesk from "../assets/shots/watermanager-desktop.png";
-import bbDesk from "../assets/shots/boutique-desktop.png";
+import tdDesk from "../assets/shots/taches-desktop.png";
 const year = new Date().getFullYear();
 ---
 
-<Base title="Alicia, développeuse web à Douala" description="Développeuse web front-end à Douala. Deux produits en ligne : WaterManager, une application de gestion pour les immeubles, et la Boutique de Boxe, 1 042 modèles vendus en ligne." image="/og/home.png">
+<Base title="Alicia, développeuse web à Douala" description="Développeuse web front-end à Douala. WaterManager, une application de gestion pour les immeubles, et Tâches, un outil personnel hors ligne. Disponible pour un stage ou une mission." image="/og/home.png">
   <section class="hero first">
     <div>
       <h1 class="words">
@@ -14,9 +14,9 @@ const year = new Date().getFullYear();
         <span class="w">Je</span> <span class="w">conçois</span> <span class="w">et</span> <span class="w">je</span> <span class="w">livre</span> <span class="w"><span class="hl">des</span></span> <span class="w"><span class="hl">sites</span></span> <span class="w"><span class="hl">qui</span></span> <span class="w"><span class="hl">servent.</span></span>
       </h1>
       <p class="rv">
-        Front-end HTML, CSS, JavaScript et Astro, depuis Douala. Deux produits en ligne,
-        utilisés par de vrais gens : une application de gestion pour les immeubles, et
-        une boutique qui vend 1 042 modèles de matériel de boxe dans toute la France.
+        Front-end HTML, CSS, JavaScript et Astro, depuis Douala. Une application de
+        gestion pour les immeubles, en ligne et utilisée par de vrais gens, et un outil
+        personnel que j'ouvre tous les matins. Des produits qui marchent, pas des maquettes.
       </p>
       <p class="now rv">disponible pour un stage ou une mission</p>
     </div>
@@ -30,7 +30,7 @@ const year = new Date().getFullYear();
   <section id="projets">
     <div class="sec-head rv">
       <h2>Projets</h2>
-      <span>deux produits en ligne</span>
+      <span>un produit en ligne, un outil personnel</span>
     </div>
 
     <article class="project rv">
@@ -69,29 +69,29 @@ const year = new Date().getFullYear();
       <div class="num">02</div>
       <div class="body">
         <div>
-          <h3><a href="/projets/boutique-de-boxe/" class="plain">Boutique de Boxe</a></h3>
-          <p class="meta"><b>{year}</b> · Astro, HTML, CSS, JavaScript · boutique en ligne</p>
+          <h3><a href="/projets/taches/" class="plain">Tâches</a></h3>
+          <p class="meta"><b>{year}</b> · HTML, CSS, JavaScript · outil personnel, hors ligne</p>
           <p>
-            Une boutique de matériel de boxe et de MMA : 1 042 modèles, tailles
-            réelles, prix TTC, paiement sécurisé, livraison dans toute la France.
-            J'ai pris en charge les pages produits, les questions fréquentes de chaque
-            page et toute l'expérience mobile, au sein d'une équipe.
+            Ma liste de tâches, construite pour moi : école, projets, perso, avec les
+            échéances et le compte de la journée. Tout reste sur l'appareil, rien n'est
+            envoyé. Je l'ouvre tous les matins ; c'est l'outil qui m'a appris à
+            soigner un produit dont je suis la seule utilisatrice.
           </p>
-          <div class="preview boxe" aria-hidden="true">
-            <div class="row"><span>Modèles en ligne</span><span><span data-count="1042">1 042</span></span></div>
-            <div class="row"><span>Tailles affichées</span><span>réelles, S · M · L</span></div>
-            <div class="row"><span>Point relais</span><span>offert dès 69 €</span></div>
-            <div class="row tot"><span>Paiement</span><span>carte, PayPlug</span></div>
+          <div class="preview todo" aria-hidden="true">
+            <div class="row"><span>Faites aujourd'hui</span><span><span data-count="4">4</span> / 10</span></div>
+            <div class="row"><span>École · projet · perso</span><span>3 · 4 · 3</span></div>
+            <div class="row"><span>En retard</span><span>1, signalée en rouge</span></div>
+            <div class="row tot"><span>Données</span><span>sur l'appareil</span></div>
           </div>
           <div class="links">
-            <a href="/projets/boutique-de-boxe/" class="more">en savoir plus</a>
-            <a href="https://boutique-de-boxe.com" target="_blank" rel="noopener">voir le site</a>
+            <a href="/projets/taches/" class="more">en savoir plus</a>
+            <span class="soon">usage personnel, pas de lien public</span>
           </div>
         </div>
-        <a href="/projets/boutique-de-boxe/" class="plain">
+        <a href="/projets/taches/" class="plain">
           <figure class="shot">
-            <Image src={bbDesk} alt="Boutique de Boxe : page d'accueil avec les gants Cleto Reyes et la fiche produit" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
-            <figcaption>boutique-de-boxe.com</figcaption>
+            <Image src={tdDesk} alt="Tâches : la liste du jour, groupée par école, projet et perso, avec la barre de progression" widths={[480, 760, 1100]} sizes="(max-width: 900px) 92vw, 440px" format="webp" quality={82} />
+            <figcaption>outil personnel · jeudi 22 octobre</figcaption>
           </figure>
         </a>
       </div>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tâches · Alicia</title>
+  <style>
+    :root {
+      --bg: #f7f4ee; --card: #fffdf8; --ink: #1f1d1a; --soft: #6b665d; --line: #e3ddd0;
+      --green: #2f8f5b; --green-soft: #e4f3ea; --red: #c2452d; --amber: #d99a1e; --amber-soft: #fbf0d5; --blue: #2e63b8; --blue-soft: #e3ecfa;
+      --serif: Georgia, "Times New Roman", serif; --mono: "Courier New", monospace; --body: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    [data-theme="dark"] { --bg: #16151a; --card: #1f1e24; --ink: #efeae0; --soft: #a8a297; --line: #35333b; --green-soft: #1d3a2b; --amber-soft: #3d3117; --blue-soft: #1d2b45; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+    .app { max-width: 760px; margin: 0 auto; padding: 36px 20px 80px; }
+    header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 26px; }
+    h1 { font-family: var(--serif); font-weight: 400; font-size: 38px; margin: 0; line-height: 1.05; }
+    h1 small { display: block; font-family: var(--mono); font-size: 13px; color: var(--soft); margin-top: 8px; letter-spacing: .02em; }
+    .count { font-family: var(--mono); font-size: 13px; color: var(--soft); text-align: right; }
+    .count b { display: block; font-family: var(--serif); font-weight: 400; font-size: 34px; color: var(--ink); line-height: 1; }
+    .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 26px; }
+    .bar i { display: block; height: 100%; background: var(--green); width: 0; transition: width .5s cubic-bezier(.2,.7,.2,1); }
+    form.add { display: flex; gap: 10px; margin-bottom: 18px; }
+    form.add input { flex: 1; font: inherit; padding: 12px 14px; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 6px; outline: none; }
+    form.add input:focus { border-color: var(--ink); }
+    form.add select { font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 6px; padding: 0 10px; }
+    form.add button { font: inherit; font-family: var(--mono); font-size: 14px; padding: 0 18px; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); border-radius: 6px; cursor: pointer; }
+    .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; font-family: var(--mono); font-size: 13px; }
+    .filters button { font: inherit; padding: 6px 12px; border: 1px solid var(--line); background: transparent; color: var(--soft); border-radius: 999px; cursor: pointer; }
+    .filters button.on { border-color: var(--ink); color: var(--ink); background: var(--card); }
+    .group { font-family: var(--mono); font-size: 12px; color: var(--soft); text-transform: uppercase; letter-spacing: .08em; margin: 22px 0 8px; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { display: grid; grid-template-columns: 26px 1fr auto; gap: 14px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; transition: transform .2s, opacity .3s; }
+    li:hover { transform: translateX(2px); }
+    li.done { opacity: .55; }
+    li.done .t { text-decoration: line-through; }
+    .box { width: 22px; height: 22px; border: 1.6px solid var(--soft); border-radius: 5px; display: grid; place-items: center; cursor: pointer; background: transparent; padding: 0; }
+    li.done .box { background: var(--green); border-color: var(--green); }
+    .box svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+    li.done .box svg { opacity: 1; }
+    .t { margin: 0; }
+    .t small { display: block; font-family: var(--mono); font-size: 12px; color: var(--soft); margin-top: 2px; }
+    .tag { font-family: var(--mono); font-size: 11px; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+    .tag.ecole { background: var(--blue-soft); color: var(--blue); }
+    .tag.projet { background: var(--green-soft); color: var(--green); }
+    .tag.perso { background: var(--amber-soft); color: var(--amber); }
+    .due { color: var(--red); }
+    .foot { margin-top: 28px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--soft); flex-wrap: wrap; gap: 8px; }
+    .foot button { font: inherit; background: none; border: 0; color: var(--soft); text-decoration: underline; cursor: pointer; padding: 0; }
+    .empty { text-align: center; color: var(--soft); padding: 40px 0; font-family: var(--serif); font-size: 20px; }
+    @media (max-width: 520px) { h1 { font-size: 30px; } form.add { flex-wrap: wrap; } form.add input { flex-basis: 100%; } form.add select, form.add button { padding: 10px 14px; } li { grid-template-columns: 26px 1fr; } .tag { grid-column: 2; justify-self: start; } }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Tâches<small id="today"></small></h1>
+      <div class="count"><b id="n">0/0</b>faites aujourd'hui</div>
+    </header>
+    <div class="bar"><i id="bar"></i></div>
+
+    <form class="add" id="add">
+      <input id="txt" placeholder="Une tâche, puis Entrée" autocomplete="off" required>
+      <select id="cat"><option value="ecole">école</option><option value="projet">projet</option><option value="perso">perso</option></select>
+      <button type="submit">ajouter</button>
+    </form>
+
+    <div class="filters" id="filters">
+      <button data-f="all" class="on">toutes</button>
+      <button data-f="todo">à faire</button>
+      <button data-f="done">faites</button>
+      <button data-f="ecole">école</button>
+      <button data-f="projet">projet</button>
+      <button data-f="perso">perso</button>
+    </div>
+
+    <div id="list"></div>
+
+    <div class="foot">
+      <span>enregistré sur cet appareil · rien n'est envoyé</span>
+      <span><button id="clear">effacer les tâches faites</button> · <button id="theme">thème</button></span>
+    </div>
+  </main>
+
+  <script>
+    const KEY = "taches.v1";
+    const seed = [
+      { t: "Réviser le chapitre JavaScript : closures et fetch", c: "ecole", d: "jeudi, partiel", done: false },
+      { t: "Rendre le TP base de données (jointures)", c: "ecole", d: "vendredi 17h", done: false, late: true },
+      { t: "Relire le cours sur les API REST", c: "ecole", d: "", done: true },
+      { t: "WaterManager : gérer les logements vides", c: "projet", d: "cette semaine", done: false },
+      { t: "WaterManager : export PDF du mois", c: "projet", d: "", done: false },
+      { t: "Portfolio : relire les textes des projets", c: "projet", d: "", done: true },
+      { t: "Mettre à jour le CV avec les deux projets", c: "projet", d: "", done: true },
+      { t: "Acheter du crédit internet (fin du forfait)", c: "perso", d: "aujourd'hui", done: false },
+      { t: "Appeler maman", c: "perso", d: "", done: true },
+      { t: "Courir 30 min au stade", c: "perso", d: "samedi matin", done: false },
+    ];
+    const params = new URLSearchParams(location.search);
+    let items = [];
+    try { items = JSON.parse(localStorage.getItem(KEY) || "null") || seed.map((s, i) => ({ id: i + 1, ...s })); } catch { items = seed.map((s, i) => ({ id: i + 1, ...s })); }
+    if (params.get("reset")) items = seed.map((s, i) => ({ id: i + 1, ...s }));
+    let filter = params.get("f") || "all";
+    if (params.get("theme")) document.documentElement.dataset.theme = params.get("theme");
+
+    const labels = { ecole: "école", projet: "projet", perso: "perso" };
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(items)); } catch {} };
+    const $ = (s) => document.querySelector(s);
+
+    document.getElementById("today").textContent = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+
+    function render() {
+      const show = items.filter((it) => filter === "all" ? true : filter === "todo" ? !it.done : filter === "done" ? it.done : it.c === filter);
+      const done = items.filter((i) => i.done).length;
+      $("#n").textContent = `${done}/${items.length}`;
+      $("#bar").style.width = items.length ? (done / items.length) * 100 + "%" : "0%";
+      document.querySelectorAll("#filters button").forEach((b) => b.classList.toggle("on", b.dataset.f === filter));
+      const groups = ["ecole", "projet", "perso"];
+      let html = "";
+      for (const g of groups) {
+        const rows = show.filter((i) => i.c === g);
+        if (!rows.length) continue;
+        html += `<div class="group">${labels[g]} · ${rows.length}</div><ul>` + rows.map((i) => `
+          <li class="${i.done ? "done" : ""}" data-id="${i.id}">
+            <button class="box" aria-label="${i.done ? "Rouvrir" : "Terminer"}"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button>
+            <p class="t">${i.t}${i.d ? `<small class="${i.late ? "due" : ""}">${i.late ? "en retard · " : ""}${i.d}</small>` : ""}</p>
+            <span class="tag ${i.c}">${labels[i.c]}</span>
+          </li>`).join("") + `</ul>`;
+      }
+      $("#list").innerHTML = html || `<p class="empty">Rien ici. C'est une bonne nouvelle.</p>`;
+    }
+
+    $("#list").addEventListener("click", (e) => {
+      const box = e.target.closest(".box"); if (!box) return;
+      const id = +box.closest("li").dataset.id;
+      const it = items.find((i) => i.id === id); it.done = !it.done; if (it.done) it.late = false;
+      save(); render();
+    });
+    $("#add").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const t = $("#txt").value.trim(); if (!t) return;
+      items.unshift({ id: Date.now(), t, c: $("#cat").value, d: "", done: false });
+      $("#txt").value = ""; save(); render();
+    });
+    $("#filters").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { filter = b.dataset.f; render(); } });
+    $("#clear").addEventListener("click", () => { items = items.filter((i) => !i.done); save(); render(); });
+    $("#theme").addEventListener("click", () => { const h = document.documentElement; h.dataset.theme = h.dataset.theme === "dark" ? "" : "dark"; });
+    render();
+  </script>
+</body>
+</html>

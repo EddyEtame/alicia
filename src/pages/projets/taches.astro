@@ -1,0 +1,92 @@
+---
+import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
+import desk from "../../assets/shots/taches-desktop.png";
+import mobile from "../../assets/shots/taches-mobile.png";
+import dark from "../../assets/shots/taches-dark.png";
+const year = new Date().getFullYear();
+---
+
+<Base title="Tâches · outil personnel de liste de tâches · Alicia" description="Tâches : la liste de tâches personnelle d'Alicia, hors ligne, avec catégories, échéances, compte de la journée et thème sombre. Conçue et développée pour elle seule." image="/og/taches.png">
+  <section class="first">
+    <span class="eyebrow rv">projet 02 · {year} · outil personnel</span>
+    <h1 class="page-title words">
+      <span class="w">Tâches,</span> <span class="w">la</span> <span class="w">liste</span> <span class="w">que</span> <span class="w">j'ouvre</span> <span class="w">tous</span> <span class="w">les</span> <span class="w">matins.</span>
+    </h1>
+    <p class="lede rv">
+      Un outil fait pour une seule utilisatrice : moi. École, projets, perso, les
+      échéances, le compte de la journée. Tout reste sur l'appareil. Pas de lien
+      public, et c'est voulu.
+    </p>
+    <ul class="facts rv">
+      <li><b>3</b>catégories</li>
+      <li><b>0</b>donnée envoyée</li>
+      <li><b>1</b>utilisatrice</li>
+    </ul>
+    <figure class="shot cover rv">
+      <Image src={desk} alt="Tâches sur ordinateur : la liste du jour groupée par école, projet et perso, barre de progression et filtres" widths={[720, 1100]} sizes="(max-width: 980px) 94vw, 940px" format="webp" quality={85} />
+      <figcaption>la liste du jour, thème clair</figcaption>
+    </figure>
+  </section>
+
+  <section class="case">
+    <div class="rv">
+      <h2>Le besoin</h2>
+      <p>
+        Entre les cours, les projets et le reste, je perdais des choses. Les applis de
+        tâches que j'ai essayées voulaient un compte, une connexion, un abonnement, et
+        me proposaient trente options pour trois besoins. Je voulais une page qui
+        s'ouvre en une seconde, qui marche dans le bus sans réseau, et qui ne demande
+        rien à personne.
+      </p>
+
+      <h2>Ce que j'ai livré</h2>
+      <ul>
+        <li>Une seule page : une tâche, une catégorie, Entrée. Elle apparaît en haut de sa liste.</li>
+        <li>Trois catégories, école, projet et perso, avec un compte par groupe et des filtres à faire, faites, par catégorie.</li>
+        <li>Les échéances en clair, et le rouge pour ce qui est en retard, parce que c'est ça qu'il faut voir en premier.</li>
+        <li>Le compte de la journée et une barre qui avance : cocher une tâche se voit.</li>
+        <li>La sauvegarde sur l'appareil, un bouton pour effacer ce qui est fait, un thème sombre pour le soir.</li>
+      </ul>
+
+      <div class="gallery">
+        <figure class="shot">
+          <Image src={dark} alt="Tâches en thème sombre, filtré sur la catégorie projet" widths={[600, 900, 1100]} sizes="(max-width: 900px) 94vw, 600px" format="webp" quality={85} />
+          <figcaption>thème sombre, filtre projet</figcaption>
+        </figure>
+        <figure class="shot tall">
+          <Image src={mobile} alt="Tâches sur téléphone, filtre à faire" widths={[400, 600]} sizes="300px" format="webp" quality={85} />
+          <figcaption>sur téléphone, filtre à faire</figcaption>
+        </figure>
+      </div>
+
+      <h2>Les décisions</h2>
+      <ul>
+        <li><strong>Pas de compte, pas de serveur.</strong> Ma liste n'a rien à faire ailleurs que sur mon téléphone. Le stockage local suffit, et il marche hors ligne.</li>
+        <li><strong>Le retard avant tout le reste.</strong> Une tâche en retard est la seule chose en rouge sur la page. Le reste est calme.</li>
+        <li><strong>Un seul geste par action.</strong> Ajouter, cocher, filtrer : jamais de confirmation, jamais de menu. Ce qu'on fait vingt fois par jour doit coûter zéro.</li>
+        <li><strong>Pas de lien public.</strong> C'est un outil, pas une vitrine. Il est montré ici en images parce que c'est le projet qui m'a appris à soigner un produit même quand personne d'autre ne le voit.</li>
+      </ul>
+
+      <div class="note">
+        Et après : des tâches récurrentes pour les cours qui reviennent chaque semaine,
+        et un rappel le matin pour ce qui tombe aujourd'hui.
+      </div>
+    </div>
+
+    <aside class="side rv">
+      <dl>
+        <dt>Rôle</dt><dd>conception, développement</dd>
+        <dt>Type</dt><dd>outil personnel, hors ligne</dd>
+        <dt>Stack</dt><dd>HTML, CSS, JavaScript</dd>
+        <dt>Données</dt><dd>stockage local, rien d'envoyé</dd>
+        <dt>Accès</dt><dd>usage personnel, pas de lien public</dd>
+      </dl>
+    </aside>
+  </section>
+
+  <nav class="nextprev" aria-label="Autres projets">
+    <a href="/projets/watermanager/">projet précédent : WaterManager</a>
+    <a href="/projets/">tous les projets</a>
+  </nav>
+</Base>
