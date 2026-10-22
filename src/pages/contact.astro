@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 const email = "aliciazeste4@gmail.com";
+const INLETT_API = "https://inlett.vercel.app";
+const INLETT_FORM = "df488b05-d0d2-42f1-8c2e-d69185971a44";
 ---
 
 <Base title="Contact · Alicia" description="Écrire à Alicia : un stage, un petit projet, une question. Réponse en français ou en anglais, en général dans la journée.">
@@ -13,12 +15,8 @@ const email = "aliciazeste4@gmail.com";
   </section>
 
   <section class="contact-grid">
-    <form class="form rv" action={`https://formsubmit.co/${email}`} method="POST">
-      <input type="hidden" name="_subject" value="Message depuis le portfolio d'Alicia" />
-      <input type="hidden" name="_next" value="https://portfolioalicia.vercel.app/merci/" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <form class="form rv" id="contact-form" method="POST" action={`mailto:${email}`} data-api={INLETT_API} data-form={INLETT_FORM} novalidate>
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
       <div class="field">
         <label for="name">votre nom</label>
@@ -32,7 +30,8 @@ const email = "aliciazeste4@gmail.com";
         <label for="message">votre message</label>
         <textarea id="message" name="message" required></textarea>
       </div>
-      <button type="submit">envoyer</button>
+      <button type="submit"><span class="label">envoyer</span></button>
+      <p class="status" aria-live="polite"></p>
     </form>
 
     <div class="rv">
@@ -46,4 +45,60 @@ const email = "aliciazeste4@gmail.com";
       </p>
     </div>
   </section>
+
+  <script>
+    async function sha256(text: string) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+      return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    function init() {
+      const form = document.getElementById("contact-form") as HTMLFormElement | null;
+      if (!form || form.dataset.bound) return;
+      form.dataset.bound = "1";
+      const btn = form.querySelector("button")!;
+      const label = btn.querySelector(".label")!;
+      const status = form.querySelector(".status")!;
+      const api = form.dataset.api!;
+      const id = form.dataset.form!;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        status.textContent = "";
+        if (!form.reportValidity()) return;
+
+        const data = new FormData(form);
+        if (String(data.get("website") || "").trim()) return; // bots fill the hidden field
+        const fields = {
+          name: String(data.get("name")).trim(),
+          email: String(data.get("email")).trim(),
+          message: String(data.get("message")).trim(),
+          page: location.pathname,
+        };
+
+        btn.disabled = true;
+        label.textContent = "envoi…";
+        try {
+          const c = await (await fetch(`${api}/api/challenge`)).json();
+          const prefix = "0".repeat(c.difficulty);
+          let nonce = 0;
+          while (!(await sha256(`${c.challenge}:${nonce}`)).startsWith(prefix)) nonce++;
+
+          const res = await fetch(`${api}/api/submit/${id}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...fields, pow_challenge: c.challenge, pow_timestamp: c.timestamp, pow_nonce: String(nonce) }),
+          });
+          if (!res.ok) throw new Error(String(res.status));
+          window.location.assign("/merci/");
+        } catch {
+          btn.disabled = false;
+          label.textContent = "envoyer";
+          status.innerHTML = "Ça n'est pas parti. Réessayez, ou écrivez-moi directement à <a href=\"mailto:aliciazeste4@gmail.com\">aliciazeste4@gmail.com</a>.";
+        }
+      });
+    }
+    init();
+    document.addEventListener("astro:page-load", init);
+  </script>
 </Base>
